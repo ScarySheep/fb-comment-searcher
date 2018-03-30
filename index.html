@@ -1,1 +1,35 @@
-<h1>Hello!</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+  <h1>Hello!</h1>
+	<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1984065068523485',
+      xfbml      : true,
+      version    : 'v2.12'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+   
+   function myFacebookLogin() {
+  FB.login(function(){}, {scope: 'email'});
+}
+	
+</script>
+<button onclick="myFacebookLogin()">Login with Facebook</button>
+  </body>
+</html>
