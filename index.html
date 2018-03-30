@@ -54,20 +54,28 @@ Post id: <input type="text" id="postID"><br>
 	}
 	function compare(a_tag,a_comment){
 		a_comment = removeDuplicates(a_comment);
-		document.write("People tagged : ");
-		document.write("<br>");
-		for(var i=0; i<a_tag.length; i++){
-			document.write(a_tag[i]+" ");
-		}
-		document.write("<br><br>");
-		document.write("People that comment : ");
-		document.write("<br>");
-		for(var i=0; i<a_comment.length; i++){
-			document.write(a_comment[i]+" ");
-		}
-		document.write("<br><br>");
+		var t0 = document.createTextNode("People tagged : <br>");
+		document.body.appendChild(t0); 
 
-		document.write("People haven't comment yet : ");
+		var x0 = document.createElement("SPAN");
+		for(var i=0; i<a_tag.length; i++){
+			var t1 = document.createTextNode(a_tag[i]+" ");
+			 x0.appendChild(t1);
+		}
+   		document.body.appendChild(x0);
+
+   		var t2 = document.createTextNode("<br><br>People that comment : <br>");
+
+   		var x1 = document.createElement("SPAN");
+		for(var i=0; i<a_comment.length; i++){
+			var t3 = document.createTextNode(a_comment[i]+" ");
+			 x1.appendChild(t3);
+		}
+		document.body.appendChild(x1);
+
+		var t4 = document.createTextNode("<br><br>People haven't comment yet : <br>");
+
+		var x2 = document.createElement("SPAN");
 		var output = 1;
   		for(var i=0; i<a_tag.length; i++){
   			output = 1;
@@ -77,9 +85,11 @@ Post id: <input type="text" id="postID"><br>
   				}
   			}
   			if(output == 1){
-  				document.write(a_tag[i]+" ");
+  				var t5 = document.createTextNode(a_tag[i]+" ");
+			 	x2.appendChild(t5);
   			}
   		}
+  		document.body.appendChild(x2);
 	}
 
 	function getJson(){
