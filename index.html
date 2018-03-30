@@ -49,17 +49,41 @@ Post id: <input type="text" id="postID"><br>
 		var gID = document.getElementById('groupID').value;
 		var pID = document.getElementById('postID').value;
 		var full = "/"+gID+"_"+pID+"/comments";
+		var tag_array = [];
+		var comment_array = [];
 		console.log('path : '+full);
 		FB.api(full,'GET',{
 			"fields":"message_tags"
 		},function(response) {
 			for(i in response.data[0].message_tags){
-				console.log(response.data[0].message_tags[i].name);
-/*				var t = document.createTextNode(response.data[0].message_tags[i].name);
-				document.write("\n");
-    			document.body.appendChild(t);*/
+				tag_array.push(response.data[0].message_tags[i].name);
 			}
   		});
+  		FB.api(full,'GET',{
+			"fields":"from"
+		},function(response) {
+			for(i in response.data){
+				comment_array.push(response.data[i].from.name);
+			}
+  		});
+
+
+  		alert(tag_array.length);
+
+  		var output = 1;
+  		for(var i=0; i<tag_array.length; i++){
+  			for(var j=0; j<comment_array.length; j++){
+  				output = 1;
+  				if(comment_array[j] == tag_array[i]){
+  					console.log("Good"+tag_array[i]);
+  					output = 0;
+  				}
+  			}
+  			if(output == 1){
+  				console.log("Bad"+tag_array[i]);
+  					//alert(tag_array[i]);
+  			}
+  		}
 	}
 /*		FB.api(
   '/160525368079820_173983936733963/comments',
