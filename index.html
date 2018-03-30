@@ -12,6 +12,7 @@
 <br>
 Group id: <input type="text" id="groupID"><br>
 Post id: <input type="text" id="postID"><br>
+Names: <input type="text" id="namesID"><br>
 <button onclick="getJson()">Submit</button>
 <script>
   window.fbAsyncInit = function() {
@@ -49,12 +50,16 @@ Post id: <input type="text" id="postID"><br>
 		var gID = document.getElementById('groupID').value;
 		var pID = document.getElementById('postID').value;
 		var full = "/"+gID+"_"+pID+"/comments";
+		var names = document.getElementById('namesID').value;
 		console.log('path : '+full);
 		FB.api(full,'GET',{
 			"fields":"from"
 		},function(response) {
-  			console.log(response.data[0].from.name);
-  			console.log(response.name);
+			for(i in response.data){
+				if(!names.includes(response.data[i].from.name)){
+					console.log(response.data[i].from.name);
+				}
+			}
   		});
 	}
 /*		FB.api(
