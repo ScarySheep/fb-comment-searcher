@@ -32,7 +32,6 @@ Post id: <input type="text" id="postID"><br>
    }(document, 'script', 'facebook-jssdk'));
    
    function myFacebookLogin() {
-   		alert("fuck");
 	 	 FB.login(function(){}, {scope: 'user_managed_groups'});
 	}
 
@@ -42,7 +41,7 @@ Post id: <input type="text" id="postID"><br>
 		var full = "/"+gID+"_"+pID+"/comments";
 		FB.api(full,'GET',{"fields":"from"},
   		function(response) {
-      		document.write(response);
+      		console.log(response);
   		});
 	}
 /*		FB.api(
