@@ -43,29 +43,41 @@ Post id: <input type="text" id="postID"><br>
 	 	 }, {scope: 'user_managed_groups'});
 	}
 
+	function removeDuplicates(arr){
+    	let unique_array = []
+   	 for(let i = 0;i < arr.length; i++){
+    	    if(unique_array.indexOf(arr[i]) == -1){
+    	        unique_array.push(arr[i])
+    	    }
+   	 }
+  	  return unique_array
+	}
 	function compare(a_tag,a_comment){
+		a_comment = removeDuplicates(a_comment);
 		document.write("People tagged : ");
+		document.write("<br>");
 		for(var i=0; i<a_tag.length; i++){
 			document.write(a_tag[i]+" ");
 		}
-		document.write("<br>");
+		document.write("<br><br>");
 		document.write("People that comment : ");
+		document.write("<br>");
 		for(var i=0; i<a_comment.length; i++){
 			document.write(a_comment[i]+" ");
 		}
-		document.write("<br>");
-		
+		document.write("<br><br>");
+
+		document.write("People haven't comment yet : ");
 		var output = 1;
   		for(var i=0; i<a_tag.length; i++){
+  			output = 1;
   			for(var j=0; j<a_comment.length; j++){
-  				output = 1;
   				if(a_comment[j] == a_tag[i]){
-  					console.log("Good"+a_tag[i]);
   					output = 0;
   				}
   			}
   			if(output == 1){
-  				console.log("Bad"+a_tag[i]);
+  				document.write(a_tag[i]+" ");
   			}
   		}
 	}
