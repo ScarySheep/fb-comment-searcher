@@ -32,8 +32,17 @@ Post id: <input type="text" id="postID"><br>
    }(document, 'script', 'facebook-jssdk'));
    
    function myFacebookLogin() {
-	 	 FB.login(function(){}, {scope: 'user_managed_groups'});
+	 	 FB.login(function(response){
+	 	 	if (response.authResponse) {
+     			var access_token = response.authResponse.accessToken;
+     			console.log('Access Token = '+ access_token);
+   			} else {
+     			console.log('User cancelled login or did not fully authorize.');
+   			}
+	 	 }, {scope: 'user_managed_groups'});
 	}
+
+
 
 	function getJson(){
 		var gID = document.getElementById('groupID').value;
