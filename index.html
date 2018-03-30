@@ -5,9 +5,15 @@
     <title>My test page</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   </head>
-  <body>
-  <h1>Hello!</h1>
-	<script>
+<body>
+<h1>Hello!</h1>
+<button onclick="myFacebookLogin()">Login with Facebook</button>
+<br>
+<br>
+Group id: <input type="text" id="groupID"><br>
+Post id: <input type="text" id="postID"><br>
+<button onclick="getJson()">Submit</button>
+<script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '1984065068523485',
@@ -26,10 +32,27 @@
    }(document, 'script', 'facebook-jssdk'));
    
    function myFacebookLogin() {
-  FB.login(function(){}, {scope: 'user_managed_groups'});
-}
-	
+   		alert("fuck");
+	 	 FB.login(function(){}, {scope: 'user_managed_groups'});
+	}
+
+	function getJson(){
+		var gID = document.getElementById('groupID').value;
+		var pID = document.getElementById('postID').value;
+		var full = "/"+gID+"_"+pID+"/comments";
+		FB.api(full,'GET',{"fields":"from"},
+  		function(response) {
+      		document.write(response);
+  		});
+	}
+/*		FB.api(
+  '/160525368079820_173983936733963/comments',
+  'GET',
+  {"fields":"from"},
+  function(response) {
+      // Insert your code here
+  }
+);*/
 </script>
-<button onclick="myFacebookLogin()">Login with Facebook</button>
-  </body>
+</body>
 </html>
