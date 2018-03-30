@@ -30,12 +30,13 @@ Post id: <input type="text" id="postID"><br>
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-   
+
+
    function myFacebookLogin() {
 	 	 FB.login(function(response){
 	 	 	if (response.authResponse) {
-     			var access_token = response.authResponse.accessToken;
-     			console.log('Access Token = '+ access_token);
+     			var user_access_token = response.authResponse.accessToken;
+     			console.log('Access Token = '+ user_access_token);
    			} else {
      			console.log('User cancelled login or did not fully authorize.');
    			}
@@ -48,14 +49,12 @@ Post id: <input type="text" id="postID"><br>
 		var gID = document.getElementById('groupID').value;
 		var pID = document.getElementById('postID').value;
 		var full = "/"+gID+"_"+pID+"/comments";
-/*		FB.api(full,'GET',{"fields":"from"},
-  		function(response) {
-  			alert("fuck");
-      		document.write(response);
-  		});*/
-  		FB.api('/me', function(response) {
-  		console.log(response);
-		});
+		console.log('path : '+full);
+		FB.api(full,'GET',{
+			"fields":"from"
+		},function(response) {
+  			console.log(response.data);
+  		});
 	}
 /*		FB.api(
   '/160525368079820_173983936733963/comments',
