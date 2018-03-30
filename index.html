@@ -32,7 +32,6 @@ Post id: <input type="text" id="postID"><br>
    }(document, 'script', 'facebook-jssdk'));
    
    function myFacebookLogin() {
-   		alert("fuck");
 	 	 FB.login(function(){}, {scope: 'user_managed_groups'});
 	}
 
@@ -40,10 +39,14 @@ Post id: <input type="text" id="postID"><br>
 		var gID = document.getElementById('groupID').value;
 		var pID = document.getElementById('postID').value;
 		var full = "/"+gID+"_"+pID+"/comments";
-		FB.api(full,'GET',{"fields":"from"},
+/*		FB.api(full,'GET',{"fields":"from"},
   		function(response) {
+  			alert("fuck");
       		document.write(response);
-  		});
+  		});*/
+  		FB.api('/me', {fields: 'last_name'}, function(response) {
+  console.log(response);
+});
 	}
 /*		FB.api(
   '/160525368079820_173983936733963/comments',
