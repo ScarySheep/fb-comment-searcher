@@ -45,7 +45,7 @@ window.fbAsyncInit = function() {
 		var para = document.getElementById("output");
 		para.innerHTML = '';
 		a_comment = removeDuplicates(a_comment);
-		var t0 = document.createTextNode("People tagged : <br/>");
+		var t0 = document.createTextNode("People tagged : ");
 		para.appendChild(t0);
 		var linebreak = document.createElement('br');
 		para.appendChild(linebreak); 
@@ -62,7 +62,7 @@ window.fbAsyncInit = function() {
 		linebreak = document.createElement('br');
 		para.appendChild(linebreak);
 
-   		t2 = document.createTextNode("<br/><br/>People that comment : <br/>");
+   		t2 = document.createTextNode("People that comment : ");
    		para.appendChild(t2);
   		
   		linebreak = document.createElement('br');
@@ -80,7 +80,7 @@ window.fbAsyncInit = function() {
 		linebreak = document.createElement('br');
 		para.appendChild(linebreak);
 
-		t4 = document.createTextNode("<br/><br/>People haven't comment yet : <br/>");
+		t4 = document.createTextNode("People haven't comment yet : ");
 		para.appendChild(t4);
 
 		linebreak = document.createElement('br');
@@ -118,7 +118,7 @@ window.fbAsyncInit = function() {
 			}
 			tag_finish = 1;
 			if(tag_finish&&comment_finish){
-				console.log("fb finish");
+				//console.log("fb finish");
 				compare(tag_array,comment_array);
 			}
   		});
@@ -130,7 +130,7 @@ window.fbAsyncInit = function() {
 			}
 			comment_finish = 1;
 			if(tag_finish&&comment_finish){
-				console.log("fb finish");
+				//console.log("fb finish");
 				compare(tag_array,comment_array);
 			}
   		});
@@ -139,7 +139,7 @@ window.fbAsyncInit = function() {
 		//var gID = document.getElementById('groupID').value;
 		//var pID = document.getElementById('postID').value;
 		var url = document.getElementById('urlID').value;
-		console.log("URL ", url);
+		//console.log("URL ", url);
 		var tmp = url.match(/(groups)(.+)/);
 		if(tmp == null || tmp.length<3 ){
 			alert("Wrong URL");
@@ -147,19 +147,19 @@ window.fbAsyncInit = function() {
 		}
 		var str = tmp[2].substring(1,tmp[2].indexOf("/permalink"));
 		if(isNaN(str)){
-			console.log(str);
+			//console.log(str);
 			FB.api('/search','GET',{"q":str,"type":"group","access_token":user_access_token},
 				function(response){
-					console.log(JSON.stringify(response));
+					//console.log(JSON.stringify(response));
 					var result = tmp[2].replace(str,response.data[0].id).replace("/permalink/","_");
 					result += "comments";
-					console.log(result);
+					//console.log(result);
 					getNames(result);
 				});
 		}else{
 			var result = tmp[2].replace("/permalink/","_");
 			result += "comments";
-			console.log(result);
+			//console.log(result);
 			getNames(result);
 		}
 		
