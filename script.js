@@ -96,28 +96,14 @@ window.fbAsyncInit = function() {
   		document.body.appendChild(x2);
 	}
 
-	function getJson(){
-		//var gID = document.getElementById('groupID').value;
-		//var pID = document.getElementById('postID').value;
-		var url = document.getElementById('urlID').value;
-		//console.log("URL ", url);
-		var tmp = url.match(/(groups)(.+)/);
-		if(tmp == null || tmp.length<3 ){
-			alert("Wrong URL");
-			return;
-		}
-		var result = tmp[2].replace("/permalink/","_");
-		result += "comments"
-		console.log(result);
-
-		//var full = "/"+gID+"_"+pID+"/comments";
+	function getNames(pID){
 		var tag_array = [];
 		var comment_array = [];
 		var tag_finish = 0;
 		var comment_finish = 0;
 
 		//console.log('path : '+full);
-		FB.api(result,'GET',{
+		FB.api(pID,'GET',{
 			"fields":"message_tags"
 		},function(response) {
 			for(i in response.data[0].message_tags){
@@ -129,7 +115,7 @@ window.fbAsyncInit = function() {
 				compare(tag_array,comment_array);
 			}
   		});
-  		FB.api(result,'GET',{
+  		FB.api(pID,'GET',{
 			"fields":"from"
 		},function(response) {
 			for(i in response.data){
@@ -141,4 +127,37 @@ window.fbAsyncInit = function() {
 				compare(tag_array,comment_array);
 			}
   		});
+	}
+	function getJson(){
+		//var gID = document.getElementById('groupID').value;
+		//var pID = document.getElementById('postID').value;
+		var url = document.getElementById('urlID').value;
+		console.log("URL ", url);
+		var tmp = url.match(/(groups)(.+)/);
+		if(tmp == null || tmp.length<3 ){
+			alert("Wrong URL");
+			return;
+		}
+		var str = tmp[2].substring(1,tmp[2].indexOf("/permalink"));
+		if(isNaN(str)){
+			FB.api('/search','GET',{"q":str,"type":"group"},
+				function(response){
+					console.log(response.data.id);
+					var result = tmp[2].replace(str,response.data.id).replace("/permalink/","_");
+					result += "comments";
+					console.log(result);
+					getNames(result);
+				});
+		}else{
+			var result = tmp[2].replace("/permalink/","_");
+			result += "comments";
+			console.log(result);
+			getNames(result);
+		}
+		//console.log(str);
+
+		//console.log(result);
+
+		//var full = "/"+gID+"_"+pID+"/comments";
+		
 	}
