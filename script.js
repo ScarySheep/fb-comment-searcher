@@ -140,10 +140,11 @@ window.fbAsyncInit = function() {
 		}
 		var str = tmp[2].substring(1,tmp[2].indexOf("/permalink"));
 		if(isNaN(str)){
+			console.log(str);
 			FB.api('/search','GET',{"q":str,"type":"group"},
 				function(response){
-					console.log(response.data.id);
-					var result = tmp[2].replace(str,response.data.id).replace("/permalink/","_");
+					console.log(JSON.stringify(response));
+					var result = tmp[2].replace(str,response.data[0].id).replace("/permalink/","_");
 					result += "comments";
 					console.log(result);
 					getNames(result);
