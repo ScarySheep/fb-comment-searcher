@@ -43,7 +43,7 @@ window.fbAsyncInit = function() {
 	function killChild(){
 		for(var i = 0; i< arguments.length; i++){
 			if(arguments[i] != null){
-				document.body.removeChild(arguments[i]);
+				arguments[i].parentNode.removeChild(arguments[i]);
 			}
 		}
 	}
@@ -52,7 +52,7 @@ window.fbAsyncInit = function() {
 		killChild(linebreak,t0,t1,t2,t3,t4,t5,x0,x1,x2);
 
 		a_comment = removeDuplicates(a_comment);
-		t0 = document.createTextNode("People tagged : ");
+		t0 = document.createTextNode("People tagged : <br/>");
 		document.body.appendChild(t0);
 		linebreak = document.createElement('br');
 		document.body.appendChild(linebreak); 
@@ -69,7 +69,7 @@ window.fbAsyncInit = function() {
 		linebreak = document.createElement('br');
 		document.body.appendChild(linebreak);
 
-   		t2 = document.createTextNode("People that comment : ");
+   		t2 = document.createTextNode("<br/><br/>People that comment : <br/>");
    		document.body.appendChild(t2);
   		
   		linebreak = document.createElement('br');
@@ -87,7 +87,7 @@ window.fbAsyncInit = function() {
 		linebreak = document.createElement('br');
 		document.body.appendChild(linebreak);
 
-		t4 = document.createTextNode("People haven't comment yet : ");
+		t4 = document.createTextNode("<br/><br/>People haven't comment yet : <br/>");
 		document.body.appendChild(t4);
 
 		linebreak = document.createElement('br');
