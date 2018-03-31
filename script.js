@@ -39,50 +39,59 @@ window.fbAsyncInit = function() {
    	 }
   	  return unique_array
 	}
+
+	function killChild(){
+		for(var i = 0; i< arguments.length; i++){
+			document.body.removeChild(arguments[i]);
+		}
+	}
 	function compare(a_tag,a_comment){
+		var linebreak, t0, t1, t2, t3, t4, t5, x0, x1, x2;
+		killChild(linebreak,t0,t1,t2,t3,t4,t5,x0,x1,x2);
+
 		a_comment = removeDuplicates(a_comment);
-		var t0 = document.createTextNode("People tagged : ");
+		t0 = document.createTextNode("People tagged : ");
 		document.body.appendChild(t0);
-		var linebreak = document.createElement('br');
+		linebreak = document.createElement('br');
 		document.body.appendChild(linebreak); 
 
-		var x0 = document.createElement("SPAN0");
+		x0 = document.createElement("SPAN0");
 		for(var i=0; i<a_tag.length; i++){
-			var t1 = document.createTextNode(a_tag[i]+" ");
+			t1 = document.createTextNode(a_tag[i]+" ");
 			 x0.appendChild(t1);
 		}
    		document.body.appendChild(x0);
 
-		var linebreak = document.createElement('br');
+		linebreak = document.createElement('br');
 		document.body.appendChild(linebreak);
-		var linebreak = document.createElement('br');
+		linebreak = document.createElement('br');
 		document.body.appendChild(linebreak);
 
-   		var t2 = document.createTextNode("People that comment : ");
+   		t2 = document.createTextNode("People that comment : ");
    		document.body.appendChild(t2);
   		
-  		var linebreak = document.createElement('br');
+  		linebreak = document.createElement('br');
 		document.body.appendChild(linebreak);
 
-   		var x1 = document.createElement("SPAN1");
+   		x1 = document.createElement("SPAN1");
 		for(var i=0; i<a_comment.length; i++){
-			var t3 = document.createTextNode(a_comment[i]+" ");
+			t3 = document.createTextNode(a_comment[i]+" ");
 			 x1.appendChild(t3);
 		}
 		document.body.appendChild(x1);
 
-		var linebreak = document.createElement('br');
+		linebreak = document.createElement('br');
 		document.body.appendChild(linebreak);
-		var linebreak = document.createElement('br');
+		linebreak = document.createElement('br');
 		document.body.appendChild(linebreak);
 
-		var t4 = document.createTextNode("People haven't comment yet : ");
+		t4 = document.createTextNode("People haven't comment yet : ");
 		document.body.appendChild(t4);
 
-		var linebreak = document.createElement('br');
+		linebreak = document.createElement('br');
 		document.body.appendChild(linebreak);
 
-		var x2 = document.createElement("SPAN2");
+		x2 = document.createElement("SPAN2");
 		var output = 1;
   		for(var i=0; i<a_tag.length; i++){
   			output = 1;
@@ -92,7 +101,7 @@ window.fbAsyncInit = function() {
   				}
   			}
   			if(output == 1){
-  				var t5 = document.createTextNode(a_tag[i]+" ");
+  				t5 = document.createTextNode(a_tag[i]+" ");
 			 	x2.appendChild(t5);
   			}
   		}
