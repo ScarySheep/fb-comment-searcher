@@ -154,6 +154,7 @@ window.fbAsyncInit = function() {
 			console.log(result);
 			getNames(result);
 		}
+		
 		//console.log(str);
 
 		//console.log(result);
