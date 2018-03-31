@@ -7,7 +7,7 @@
 <br>
 <br>
 接著複製網址，格式應該要如下<br>
-https://<i></i>www<i></i>.facebook.com<i></i>/groups/godotengine/permalink/1198654730271119/<br>
+https://<i></i>www<i></i>.facebook.com<i></i>/groups/godotengine/permalink/1198654730271119/(目前有問題，努力修復中)<br>
 https://<i></i>www<i></i>.facebook.com<i></i>/groups/127737247847318/permalink/174921973128845/<br>
 （如果有看到其他格式也請跟我說）
 <br>
