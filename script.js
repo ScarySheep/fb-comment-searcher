@@ -97,16 +97,27 @@ window.fbAsyncInit = function() {
 	}
 
 	function getJson(){
-		var gID = document.getElementById('groupID').value;
-		var pID = document.getElementById('postID').value;
-		var full = "/"+gID+"_"+pID+"/comments";
+		//var gID = document.getElementById('groupID').value;
+		//var pID = document.getElementById('postID').value;
+		var url = document.getElementById('urlID').value;
+		//console.log("URL ", url);
+		var tmp = url.match(/(groups)(.+)/);
+		if(tmp == null || tmp.length<3 ){
+			alert("Wrong URL");
+			return;
+		}
+		var result = tmp[2].replace("/permalink/","_");
+		result += "comments"
+		console.log(result);
+
+		//var full = "/"+gID+"_"+pID+"/comments";
 		var tag_array = [];
 		var comment_array = [];
 		var tag_finish = 0;
 		var comment_finish = 0;
 
 		//console.log('path : '+full);
-		FB.api(full,'GET',{
+		FB.api(result,'GET',{
 			"fields":"message_tags"
 		},function(response) {
 			for(i in response.data[0].message_tags){
@@ -118,7 +129,7 @@ window.fbAsyncInit = function() {
 				compare(tag_array,comment_array);
 			}
   		});
-  		FB.api(full,'GET',{
+  		FB.api(result,'GET',{
 			"fields":"from"
 		},function(response) {
 			for(i in response.data){
