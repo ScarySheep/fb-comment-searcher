@@ -42,10 +42,9 @@ window.fbAsyncInit = function() {
 
 	function killChild(){
 		for(var i = 0; i< arguments.length; i++){
-			if(arguments[i] == null){
-				console.log("child not exist");
+			if(arguments[i] != null){
+				document.body.removeChild(arguments[i]);
 			}
-			document.body.removeChild(arguments[i]);
 		}
 	}
 	function compare(a_tag,a_comment){
