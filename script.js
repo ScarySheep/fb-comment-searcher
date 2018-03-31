@@ -40,58 +40,51 @@ window.fbAsyncInit = function() {
   	  return unique_array
 	}
 
-	function killChild(){
-		for(var i = 0; i< arguments.length; i++){
-			if(arguments[i] != null){
-				arguments[i].parentNode.removeChild(arguments[i]);
-			}
-		}
-	}
-	var linebreak, t0, t1, t2, t3, t4, t5, x0, x1, x2;
+
 	function compare(a_tag,a_comment){
-		killChild(linebreak,t0,t1,t2,t3,t4,t5,x0,x1,x2);
-
+		var para = document.getElementById("output");
+		para.innerHTML = '';
 		a_comment = removeDuplicates(a_comment);
-		t0 = document.createTextNode("People tagged : <br/>");
-		document.body.appendChild(t0);
-		linebreak = document.createElement('br');
-		document.body.appendChild(linebreak); 
+		var t0 = document.createTextNode("People tagged : <br/>");
+		para.appendChild(t0);
+		var linebreak = document.createElement('br');
+		para.appendChild(linebreak); 
 
-		x0 = document.createElement("SPAN0");
+		var x0 = document.createElement("SPAN0");
 		for(var i=0; i<a_tag.length; i++){
 			t1 = document.createTextNode(a_tag[i]+" ");
 			 x0.appendChild(t1);
 		}
-   		document.body.appendChild(x0);
+   		para.appendChild(x0);
 
 		linebreak = document.createElement('br');
-		document.body.appendChild(linebreak);
+		para.appendChild(linebreak);
 		linebreak = document.createElement('br');
-		document.body.appendChild(linebreak);
+		para.appendChild(linebreak);
 
    		t2 = document.createTextNode("<br/><br/>People that comment : <br/>");
-   		document.body.appendChild(t2);
+   		para.appendChild(t2);
   		
   		linebreak = document.createElement('br');
-		document.body.appendChild(linebreak);
+		para.appendChild(linebreak);
 
    		x1 = document.createElement("SPAN1");
 		for(var i=0; i<a_comment.length; i++){
 			t3 = document.createTextNode(a_comment[i]+" ");
 			 x1.appendChild(t3);
 		}
-		document.body.appendChild(x1);
+		para.appendChild(x1);
 
 		linebreak = document.createElement('br');
-		document.body.appendChild(linebreak);
+		para.appendChild(linebreak);
 		linebreak = document.createElement('br');
-		document.body.appendChild(linebreak);
+		para.appendChild(linebreak);
 
 		t4 = document.createTextNode("<br/><br/>People haven't comment yet : <br/>");
-		document.body.appendChild(t4);
+		para.appendChild(t4);
 
 		linebreak = document.createElement('br');
-		document.body.appendChild(linebreak);
+		para.appendChild(linebreak);
 
 		x2 = document.createElement("SPAN2");
 		var output = 1;
@@ -107,7 +100,7 @@ window.fbAsyncInit = function() {
 			 	x2.appendChild(t5);
   			}
   		}
-  		document.body.appendChild(x2);
+  		para.appendChild(x2);
 	}
 
 	function getNames(pID){
