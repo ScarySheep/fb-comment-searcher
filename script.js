@@ -47,8 +47,8 @@ window.fbAsyncInit = function() {
 			}
 		}
 	}
+	var linebreak, t0, t1, t2, t3, t4, t5, x0, x1, x2;
 	function compare(a_tag,a_comment){
-		var linebreak, t0, t1, t2, t3, t4, t5, x0, x1, x2;
 		killChild(linebreak,t0,t1,t2,t3,t4,t5,x0,x1,x2);
 
 		a_comment = removeDuplicates(a_comment);
