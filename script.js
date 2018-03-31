@@ -15,11 +15,11 @@ window.fbAsyncInit = function() {
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-
+	var user_access_token;
    function myFacebookLogin() {
 	 	 FB.login(function(response){
 	 	 	if (response.authResponse) {
-     			var user_access_token = response.authResponse.accessToken;
+     			user_access_token = response.authResponse.accessToken;
      			console.log('Access Token = '+ user_access_token);
    			} else {
      			console.log('User cancelled login or did not fully authorize.');
@@ -141,7 +141,7 @@ window.fbAsyncInit = function() {
 		var str = tmp[2].substring(1,tmp[2].indexOf("/permalink"));
 		if(isNaN(str)){
 			console.log(str);
-			FB.api('/search','GET',{"q":str,"type":"group"},
+			FB.api('/search','GET',{"q":str,"type":"group","access_token":user_access_token},
 				function(response){
 					console.log(JSON.stringify(response));
 					var result = tmp[2].replace(str,response.data[0].id).replace("/permalink/","_");
