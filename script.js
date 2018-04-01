@@ -20,7 +20,7 @@ function myFacebookLogin() {
 	FB.login(function(response){
 		if (response.authResponse) {
 			user_access_token = response.authResponse.accessToken;
-			console.log(user_access_token);
+			console.log("access token:"+user_access_token);
 			document.getElementById("loginstatus").style.color = "#00ff00";
 			document.getElementById("loginstatus").innerHTML = "login successfully!"
      			//console.log('Access Token = '+ user_access_token);
