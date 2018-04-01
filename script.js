@@ -118,7 +118,7 @@ function getNames(pID){
 			"fields":"message_tags"
 		},function(response) {
 			if (!response || response.error) {
-				alert(response.error.message);
+				alert("error:\n"+response.error.message);
 			}else{
 				for(i in response.data[0].message_tags){
 					tag_array.push(response.data[0].message_tags[i].name);
@@ -134,7 +134,7 @@ function getNames(pID){
 			"fields":"from"
 		},function(response) {
 			if (!response || response.error) {
-				alert(response.error.message);
+				alert("error:\n"+response.error.message);
 			}else{
 				for(i in response.data){
 					comment_array.push(response.data[i].from.name);
@@ -163,7 +163,7 @@ function getNames(pID){
 			FB.api('/search','GET',{"q":str,"type":"group","access_token":user_access_token},
 				function(response){
 					if (!response || response.error) {
-						alert(response.error.message);
+						alert("error:\n"+response.error.message);
 					}else{
 						var result = tmp[2].replace(str,response.data[0].id).replace("/permalink/","_");
 						result += "comments";
