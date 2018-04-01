@@ -84,7 +84,7 @@ function compare(a_tag,a_comment){
 	para.appendChild(linebreak);
 
 	var t4 = document.createElement("b");
-	t4.innerHTML = "People haven't comment yet : ";
+	t4.innerHTML = "People who were tagged but haven't comment yet : ";
 	para.appendChild(t4);
 
 	linebreak = document.createElement('br');
@@ -153,11 +153,12 @@ function getNames(pID){
 		var url = document.getElementById('urlID').value;
 		//console.log("URL ", url);
 		var tmp = url.match(/(groups)(.+)/);
-		if(tmp == null){
+		if(tmp == null || tmp.length<3){
 			alert("Wrong URL");
 			return;
 		}
 		var str = tmp[2].substring(1,tmp[2].indexOf("/permalink"));
+		//console.log(str);
 		if(isNaN(str)){
 			//console.log(str);
 			FB.api('/search','GET',{"q":str,"type":"group","access_token":user_access_token},
