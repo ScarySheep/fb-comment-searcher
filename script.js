@@ -19,7 +19,7 @@ var user_access_token;
 function myFacebookLogin() {
 	FB.login(function(response){
 		if (response.authResponse) {
-			user_access_token = response.authResponse.accessToken;
+			user_access_token = 'EAACEdEose0cBAGg9MCDcFCxrqdKAx7ervfKkvSaiEYdoSe1fpqnlzVIx4Q00uT7yZCgN3586kggFYPiCsx232JlLgk3mO88jXhgLZCQbRc52C0dGByfylImmP6qzAUl8LXtNYX0c2raKSnTrIMb62WzwPHZAwp9JZCHN9Vum0ghnxQgGWNo6OZBEFlgzvqfdXYWTRN9E8QlXGeHY632SFKwu8ZBD1Sf5S1nj4uRj7uXQZDZD';
 
 			document.getElementById("loginstatus").style.color = "#00ff00";
 			document.getElementById("loginstatus").innerHTML = "login successfully!"
